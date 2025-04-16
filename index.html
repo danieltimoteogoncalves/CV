@@ -394,35 +394,39 @@
           </div>
 
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="https://formsubmit.co/danieltimoteogoncalves@gmail.com" method="POST">
+            <form action="https://formsubmit.co/danieltimoteogoncalves@gmail.com" method="POST" class="contact-form">
               <div class="row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6 position-relative">
+                  <input type="text" name="name" class="form-control" id="name" required placeholder=" ">
                   <label for="name">Your Name</label>
-                  <input type="text" name="name" class="form-control" id="name" required>
                 </div>
-                <div class="form-group col-md-6">
-                  <label for="name">Your Email</label>
-                  <input type="email" class="form-control" name="email" id="email" required>
+                <div class="form-group col-md-6 position-relative">
+                  <input type="email" name="email" class="form-control" id="email" required placeholder=" ">
+                  <label for="email">Your Email</label>
                 </div>
               </div>
-              <div class="form-group">
-                <label for="name">Subject</label>
-                <input type="text" class="form-control" name="subject" id="subject" required>
+            
+              <div class="form-group position-relative">
+                <input type="text" class="form-control" name="subject" id="subject" required placeholder=" ">
+                <label for="subject">Subject</label>
               </div>
-              <div class="form-group">
-                <label for="name">Message</label>
-                <textarea class="form-control" name="message" rows="10" required></textarea>
+            
+              <div class="form-group position-relative">
+                <textarea class="form-control" name="message" id="message" rows="6" required placeholder=" "></textarea>
+                <label for="message">Message</label>
               </div>
+            
               <div class="my-3">
                 <div class="loading"></div>
                 <div class="error-message"></div>
                 <div class="sent-message"></div>
               </div>
+            
               <div class="text-center">
                 <button type="submit" class="button-email">Send Message</button>
               </div>
-            
             </form>
+            
 
             <!--<form action="https://formsubmit.co/danieltimoteogoncalves@gmail.com" method="POST">
               <input type="text" name="name" placeholder="nome" required>
