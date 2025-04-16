@@ -65,6 +65,22 @@ h6 {
   opacity: 1;
 }
 
+.custom-badge {
+  background-color: #001f3f;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 10px 18px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.custom-badge:hover {
+  background-color: #004080;
+  transform: scale(1.05);
+}
+
+
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
