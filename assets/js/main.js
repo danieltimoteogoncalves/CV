@@ -1,9 +1,3 @@
-/**
-* Template Name: iPortfolio - v3.10.0
-* Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 (function() {
   "use strict";
 
@@ -41,24 +35,33 @@
   }
 
   /**
-   * Navbar links active state on scroll
+   * Navbar links active state on scroll — iPortfolio fix
    */
   let navbarlinks = select('#navbar .scrollto', true)
-  const navbarlinksActive = () => {
-    let position = window.scrollY + 200
-    navbarlinks.forEach(navbarlink => {
-      if (!navbarlink.hash) return
-      let section = select(navbarlink.hash)
-      if (!section) return
-      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        navbarlink.classList.add('active')
-      } else {
-        navbarlink.classList.remove('active')
+  const sections = select('section', true)
+  const headerOffset = 70 // ajuste conforme a altura do header
+  const navbar = select('#navbar')
+
+  const updateNavbarLinks = () => {
+    let scrollPosition = window.scrollY + headerOffset + 1
+
+    sections.forEach(section => {
+      const top = section.offsetTop
+      const bottom = top + section.offsetHeight
+      const id = section.getAttribute('id')
+
+      const link = select(`#navbar a[href="#${id}"]`)
+      if (!link) return
+
+      if (scrollPosition >= top && scrollPosition < bottom) {
+        navbarlinks.forEach(el => el.classList.remove('active'))
+        link.classList.add('active')
       }
     })
   }
-  window.addEventListener('load', navbarlinksActive)
-  onscroll(document, navbarlinksActive)
+
+  window.addEventListener('load', updateNavbarLinks)
+  onscroll(document, updateNavbarLinks)
 
   /**
    * Scrolls to an element with header offset
@@ -66,25 +69,9 @@
   const scrollto = (el) => {
     let elementPos = select(el).offsetTop
     window.scrollTo({
-      top: elementPos,
+      top: elementPos - headerOffset,
       behavior: 'smooth'
     })
-  }
-
-  /**
-   * Back to top button
-   */
-  let backtotop = select('.back-to-top')
-  if (backtotop) {
-    const toggleBacktotop = () => {
-      if (window.scrollY > 100) {
-        backtotop.classList.add('active')
-      } else {
-        backtotop.classList.remove('active')
-      }
-    }
-    window.addEventListener('load', toggleBacktotop)
-    onscroll(document, toggleBacktotop)
   }
 
   /**
@@ -97,7 +84,7 @@
   })
 
   /**
-   * Scrool with ofset on links with a class name .scrollto
+   * Scroll with offset on links with a class name .scrollto
    */
   on('click', '.scrollto', function(e) {
     if (select(this.hash)) {
@@ -115,7 +102,7 @@
   }, true)
 
   /**
-   * Scroll with ofset on page load with hash links in the url
+   * Scroll with offset on page load with hash links in the URL
    */
   window.addEventListener('load', () => {
     if (window.location.hash) {
@@ -159,7 +146,7 @@
   }
 
   /**
-   * Porfolio isotope and filter
+   * Portfolio isotope and filter
    */
   window.addEventListener('load', () => {
     let portfolioContainer = select('.portfolio-container');
@@ -258,4 +245,4 @@
    */
   new PureCounter();
 
-})()
+})();
